@@ -5,17 +5,12 @@
         </header>
         <ul>
             <family-contact 
-                name="Anushree Kulkarni" 
-                phone-number="91088 21641"
-                email-address="anushree@gmail.com"
-                is-favorite="1"
-            >
-            </family-contact>
-            <family-contact
-                name="Abhinav Kulkarni"
-                phone-number="81471 76732"
-                email-address="abhinav@gmail.com"
-                is-favorite="0"
+              v-for="member in family"
+              :key="member.id"
+              :name="member.name" 
+              :phone-number="member.phone"
+              :email-address="member.email"
+              :is-favorite="true"
             >
             </family-contact>
         </ul>

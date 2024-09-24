@@ -26,18 +26,18 @@
         required: true,
       },
       isFavorite: {
-        type: String,
+        type: Boolean,
         required: false,
-        default: '0',
-        validator: function (value) {
-          return value === '1' || value === '0';
-        },
+        default: false,
+        // validator: function (value) {
+        //   return value === '1' || value === '0';
+        // },
       },
     },
     data() {
       return {
         showStatus: false,
-        Favorite: this.isFavorite === '1', 
+        Favorite: this.isFavorite, 
       };
     },
     methods: {
@@ -45,7 +45,7 @@
         this.showStatus = !this.showStatus;
       },
       toggleFavHandler() {
-        this.Favorite = !this.Favorite; // Toggle local state
+        this.Favorite = !this.Favorite;  
       },
     },
   };
