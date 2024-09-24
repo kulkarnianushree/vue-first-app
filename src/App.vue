@@ -2,7 +2,7 @@
     <section>
         <h2>My Family</h2>
         <ul>
-            <li></li>
+            <family-contact></family-contact>
         </ul>
     </section>
 </template>
