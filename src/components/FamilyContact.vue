@@ -35,6 +35,15 @@
         default: false,
       },
     },
+    emits:{
+        'favorite-status':function(id){
+            if(id){
+                return true
+            }else{
+                return false
+            }
+        }
+    },
     data() {
       return {
         showStatus: false,

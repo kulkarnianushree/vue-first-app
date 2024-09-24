@@ -56,10 +56,8 @@ export default {
   },
   methods: {
     toggleFavstatus(favid) {
-      // Find the member by id
       const selectedMember = this.family.find((member) => favid === member.id);
       if (selectedMember) {
-        // Toggle the favorite status
         selectedMember.favorite = !selectedMember.favorite;
       }
     },
