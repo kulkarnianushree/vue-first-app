@@ -1,6 +1,6 @@
 <template>
     <li>
-      <h2>{{ name }} {{ Favorite ? 'Favorite' : '' }}</h2>
+      <h2>{{ name }} {{ isFavorite ? 'Favorite' : '' }}</h2>
       <button @click="toggleHandler">{{ showStatus ? 'hide' : 'show' }} Details</button>
       <button @click="toggleFavHandler">Toggle Favorite</button>
       <ul v-if="showStatus">
@@ -25,19 +25,19 @@
         type: String,
         required: true,
       },
+      id: {
+        type: String,
+        required: true,
+      },
       isFavorite: {
         type: Boolean,
         required: false,
         default: false,
-        // validator: function (value) {
-        //   return value === '1' || value === '0';
-        // },
       },
     },
     data() {
       return {
         showStatus: false,
-        Favorite: this.isFavorite, 
       };
     },
     methods: {
@@ -45,7 +45,7 @@
         this.showStatus = !this.showStatus;
       },
       toggleFavHandler() {
-        this.Favorite = !this.Favorite;  
+        this.$emit('favorite-status', this.id); // Emit the event to the parent
       },
     },
   };
