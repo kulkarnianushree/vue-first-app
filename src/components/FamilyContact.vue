@@ -1,33 +1,53 @@
 <template>
     <li>
-        <h2>{{ family.name }}</h2>
-        <button @click="toggleHandler">Show Details</button>
-        <ul v-if="showStatus">
-            <li><strong>Phone:</strong>{{ family.phone }}</li>
-            <li><strong>Email:</strong>{{ family.email }}</li>
-        </ul>
+      <h2>{{ name }} {{ Favorite ? 'Favorite' : '' }}</h2>
+      <button @click="toggleHandler">{{ showStatus ? 'hide' : 'show' }} Details</button>
+      <button @click="toggleFavHandler">Toggle Favorite</button>
+      <ul v-if="showStatus">
+        <li><strong>Phone:</strong> {{ phoneNumber }}</li>
+        <li><strong>Email:</strong> {{ emailAddress }}</li>
+      </ul>
     </li>
-</template>
-
-<script>
-export default{
-    data:function(){
-        return{
-            showStatus:false,
-            family:
-                {
-                    id:'1',
-                    name:'Anushree Kulkarni',
-                    phone:'9108 821 641',
-                    email:'anushree@gmail.com'
-                },
-            
-        }
+  </template>
+  
+  <script>
+  export default {
+    props: {
+      name: {
+        type: String,
+        required: true,
+      },
+      phoneNumber: {
+        type: String,
+        required: true,
+      },
+      emailAddress: {
+        type: String,
+        required: true,
+      },
+      isFavorite: {
+        type: String,
+        required: false,
+        default: '0',
+        validator: function (value) {
+          return value === '1' || value === '0';
+        },
+      },
     },
-    methods:{
-        toggleHandler(){
-            this.showStatus = !this.showStatus
-        }
-    }
-}
-</script>
+    data() {
+      return {
+        showStatus: false,
+        Favorite: this.isFavorite === '1', 
+      };
+    },
+    methods: {
+      toggleHandler() {
+        this.showStatus = !this.showStatus;
+      },
+      toggleFavHandler() {
+        this.Favorite = !this.Favorite; // Toggle local state
+      },
+    },
+  };
+  </script>
+  
