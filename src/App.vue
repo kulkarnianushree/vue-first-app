@@ -18,6 +18,7 @@
         :is-favorite="member.favorite"
         :id="member.id"
         @favorite-status="toggleFavstatus"
+        @delete-member="deleteMember"
       />
     </ul>
   </section>
@@ -72,6 +73,9 @@ export default {
     formSubmitHandler(user){
       this.family.push(user)
       console.log(user)
+    },
+    deleteMember(idx){
+      this.family = this.family.filter((member)=> member.id !== idx)
     }
   },
 };

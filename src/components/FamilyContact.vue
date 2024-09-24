@@ -7,6 +7,7 @@
         <li><strong>Phone:</strong> {{ phoneNumber }}</li>
         <li><strong>Email:</strong> {{ emailAddress }}</li>
       </ul>
+      <button @click="deleteMember">Delete</button>
     </li>
   </template>
   
@@ -42,6 +43,13 @@
             }else{
                 return false
             }
+        },
+        'delete-member':function(id){
+            if(id){
+                return true
+            }else{
+                return false
+            }
         }
     },
     data() {
@@ -56,6 +64,9 @@
       toggleFavHandler() {
         this.$emit('favorite-status', this.id); 
       },
+      deleteMember(){
+        this.$emit('delete-member',this.id)
+      }
     },
   };
   </script>
