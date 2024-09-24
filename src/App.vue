@@ -3,6 +3,11 @@
     <header>
       <h1>My Family</h1>
     </header>
+    <section>
+      <new-member
+        @form-submit="formSubmitHandler"
+      ></new-member>
+    </section>
     <ul>
       <family-contact
         v-for="member in family"
@@ -19,7 +24,10 @@
 </template>
 
 <script>
+
+
 export default {
+  
   data() {
     return {
       family: [
@@ -61,6 +69,10 @@ export default {
         selectedMember.favorite = !selectedMember.favorite;
       }
     },
+    formSubmitHandler(user){
+      this.family.push(user)
+      console.log(user)
+    }
   },
 };
 </script>

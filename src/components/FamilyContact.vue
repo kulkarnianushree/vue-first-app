@@ -54,7 +54,7 @@
         this.showStatus = !this.showStatus;
       },
       toggleFavHandler() {
-        this.$emit('favorite-status', this.id); // Emit the event to the parent
+        this.$emit('favorite-status', this.id); 
       },
     },
   };
